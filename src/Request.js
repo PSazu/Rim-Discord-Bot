@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 
-async function FetchUserData(username) {
-    const res = await fetch(`https://www.codewars.com/api/v1/users/${username}`);
+async function FetchUserData(api) {
+    const res = await fetch(api);
     if(!res.ok) {
         const message = `Error has occured during fetch ${res.status}`
         throw new Error(message);
