@@ -21,8 +21,8 @@ function highestTrained (data) {
 client.on('message', Message => {
   if(Message.content.startsWith('\\')) {
     const [Command, ...PREFIX] = Message.content.substring(1).split(' ');
-    if(PREFIX[0] === undefined || PREFIX[1] === undefined) { return; }
     if(PREFIX[0] === '-user' || PREFIX[0] === '-u') {
+      if(PREFIX[0] === undefined || PREFIX[1] === undefined) { return; }
       switch(Command.toLowerCase()) {
         case 'cw':
         case 'codewars': 
@@ -38,34 +38,38 @@ client.on('message', Message => {
       }
     }
     else if (PREFIX[0] === '-kata' || PREFIX[0] === '-k') {
+      if(PREFIX[0] === undefined || PREFIX[1] === undefined) { return; }
       switch(Command.toLowerCase()) {
         case 'cw':
         case 'codewars':
-        FetchUserData(`http://www.codewars.com/api/v1/users/${PREFIX[1]}/code-challenges/completed?page=0`).then(JSON => {
-         console.log('REQUEST SUCCESS');
-         let arr = [];
-         for(let i = 0; i < JSON.data.length; i++) {
-           if(arr.length === 5) { break;}
-           arr.push([JSON['data'][i]['name'],JSON['data'][i]['completedAt']]);
-          }
-          const description = Formatter(arr);
-          const embeded_completed_kata = new MessageEmbed()
-          .setAuthor('Codewars', 'https://cdn.discordapp.com/attachments/808327538291900416/872458877126475826/codewars.png')
-          .setTitle(`Latest completed kata ${PREFIX[1]}`)
-          .setColor('#0099ff')
-          .setDescription(description)
-          .setFooter(Message.author.tag, Message.author.displayAvatarURL());
-          Message.channel.send(embeded_completed_kata)
-        })
-        .catch(Error => {
-          Message.reply('failed to load request :)');
-          console.log(Error.message);
-        });
-         break;
+          FetchUserData(`http://www.codewars.com/api/v1/users/${PREFIX[1]}/code-challenges/completed?page=0`).then(JSON => {
+            console.log('REQUEST SUCCESS');
+            let arr = [];
+            for(let i = 0; i < JSON.data.length; i++) {
+              if(arr.length === 10) { break;}
+              arr.push([JSON['data'][i]['name'],JSON['data'][i]['completedAt']]);
+            }
+            const description = Formatter(arr);
+            const embeded_completed_kata = new MessageEmbed()
+            .setAuthor('Codewars', 'https://cdn.discordapp.com/attachments/808327538291900416/872458877126475826/codewars.png')
+            .setTitle(`Latest completed katas (${PREFIX[1]})`)
+            .setColor('#0099ff')
+            .setDescription(description)
+            .setFooter(Message.author.tag, Message.author.displayAvatarURL());
+            Message.channel.send(embeded_completed_kata)
+          })
+          .catch(Error => {
+            Message.reply('failed to load request :)');
+            console.log(Error.message);
+          });
+          break;
+        }
+      }
+      else if (PREFIX[0] === '-help') {
+        console.log('THIS SHIT FINALLY WORKS ??');
       }
     }
-  }
-})
+  })
 
 
 function Embeded_Message(data, trained, thumb, Message) {
@@ -86,11 +90,12 @@ function Formatter(arr) {
   arr.forEach((element, index, array) => {
       let [kata, completedAt] = element;
       let date = moment(completedAt).format('LT');
-      str += `${counter}` + ". " + kata + "   " + date + "\n \n";
+      str += `${counter}` + ". " + kata + "   " + `(${completedAt.substring(0,10)} ${date})` + "\n \n";
       counter++;
   }) 
   return str
 } 
+
 
 
 client.login(process.env.RIM_TOKEN)
