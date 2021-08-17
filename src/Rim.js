@@ -1,14 +1,13 @@
 //Local envoirment variable
 require('dotenv').config({path: 'E:\\Local workshop files\\VS code workshop\\Rim\\.env'});
 // Node modules
-const {Client, Message, MessageEmbed} = require('discord.js');
+const {Client, Message, MessageEmbed, Intents} = require('discord.js12');
 const {FetchUserData, Thumbnail} = require('./Request.js'); 
-const moment = require('moment');
 //Discord Client object
 const client = new Client();
 
 client.on('ready', () => {
-    console.log(`${client.user.tag} bot has logged in to the server`);
+    console.log(`${client.user.tag} bot ready to run`);
 });
 
 function highestTrained (data) {
@@ -87,16 +86,13 @@ function Embeded_Message(data, trained, thumb, Message) {
 function Formatter(arr) {
   let str = '';
   let counter = 1; 
-  arr.forEach((element, index, array) => {
+  arr.forEach((element) => {
       let [kata, completedAt] = element;
-      let date = moment(completedAt).format('LT');
-      str += `${counter}` + ". " + kata + "   " + `(${completedAt.substring(0,10)} ${date})` + "\n \n";
+      str += `${counter}` + ". " + kata + "   " + `(${completedAt.substring(0,10)})` + "\n \n";
       counter++;
   }) 
   return str
 } 
-
-
 
 client.login(process.env.RIM_TOKEN)
 

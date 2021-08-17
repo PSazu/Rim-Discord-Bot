@@ -11,9 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^12.5.3",
+    "discord.js12": "npm:discord.js@^12.5.3",
     "dotenv": "^10.0.0",
-    "moment": "^2.29.1",
     "node-fetch": "^2.6.1"
   }
 }
