@@ -1,21 +1,15 @@
 //Local envoirment variable
 require('dotenv').config({path: 'E:\\Local workshop files\\VS code workshop\\Rim\\.env'});
-// Node modules
-const {Client, Message, MessageEmbed, Intents} = require('discord.js12');
-const {FetchUserData, Thumbnail} = require('./Request.js'); 
+//modules
+const {Client, Message, MessageEmbed} = require('discord.js12');
+const {FetchUserData, Thumbnail, Rank} = require('./Request.js'); 
+const gif = require('./helper/gifs.js');
 //Discord Client object
 const client = new Client();
 
 client.on('ready', () => {
     console.log(`${client.user.tag} bot ready to run`);
 });
-
-function highestTrained (data) {
-  const Languages = Object.keys(data['ranks']['languages']);
-  Languages.push(`(${data['ranks']['languages'][Languages[0]]['name']})`);
-  const joined = Languages.join(', ');
-  return [joined, Languages];
-}
 
 client.on('message', Message => {
   if(Message.content.startsWith('\\')) {
@@ -27,8 +21,7 @@ client.on('message', Message => {
         case 'codewars': 
         FetchUserData(`https://www.codewars.com/api/v1/users/${PREFIX[1]}`).then(data => {
           console.log('REQUEST SUCCESS');
-          const highest = highestTrained(data);
-          Message.channel.send(Embeded_Message(data, highest[0],highest[1], Message));
+          Message.channel.send(Embeded_Message('-user', Message, data));
         }).catch(Error => {
           Message.reply('failed to load request :)');
           console.log(Error.message);
@@ -49,13 +42,7 @@ client.on('message', Message => {
               arr.push([JSON['data'][i]['name'],JSON['data'][i]['completedAt']]);
             }
             const description = Formatter(arr);
-            const embeded_completed_kata = new MessageEmbed()
-            .setAuthor('Codewars', 'https://cdn.discordapp.com/attachments/808327538291900416/872458877126475826/codewars.png')
-            .setTitle(`Latest completed katas (${PREFIX[1]})`)
-            .setColor('#0099ff')
-            .setDescription(description)
-            .setFooter(Message.author.tag, Message.author.displayAvatarURL());
-            Message.channel.send(embeded_completed_kata)
+            Message.channel.send(Embeded_Message('-kata', Message, description, PREFIX[1]));
           })
           .catch(Error => {
             Message.reply('failed to load request :)');
@@ -64,24 +51,59 @@ client.on('message', Message => {
           break;
         }
       }
-      else if (PREFIX[0] === '-help') {
-        console.log('THIS SHIT FINALLY WORKS ??');
-      }
+
+	else if (PREFIX[0] === '-rank' || PREFIX[0] === '-r') {
+		if(PREFIX[1] === undefined) { return; }
+		switch(Command.toLowerCase())
+		{
+			case 'cw':
+			case 'codewars':
+				FetchUserData(`https://www.codewars.com/api/v1/users/${PREFIX[1]}`).then(data => {
+          Message.channel.send(Embeded_Message('-rank', Message, data));
+				})
+				.catch(Error => {
+					Message.reply('failed to load request :)');
+					console.log(Error.message);
+				});
+			break;
     }
-  })
+	}
+	else if (PREFIX[0] === '-help') {
+
+  } 
+}});
 
 
-function Embeded_Message(data, trained, thumb, Message) {
-  const embed = new MessageEmbed()
+function Embeded_Message(Command, Message, data, ...extraArg) {
+  const EmbededMessage = new MessageEmbed()
   .setAuthor('Codewars', 'https://cdn.discordapp.com/attachments/808327538291900416/872458877126475826/codewars.png')
-  .setTitle(data.username) 
-  .setColor(0x23272A)
-  .setThumbnail(Thumbnail(thumb))
-  .addFields({name: 'Progress', value: `Rank: ${data['ranks']['overall'].name} \n Leaderboard Position: #${data.leaderboardPosition} \n Honor: ${data.honor} \n Total Completed Kata: ${data.codeChallenges['totalCompleted']} \n Highest Trained: ${trained}`, inline: true})
   .setFooter(Message.author.tag, Message.author.displayAvatarURL());
-  return embed;
+  switch(Command.toLowerCase()){
+    case'-rank':{
+      EmbededMessage.setColor('#FF6B6B');
+      EmbededMessage.setTitle(data.username);
+      EmbededMessage.setImage(gif.generateGifs(1, 11));
+      EmbededMessage.setDescription(`Hi ${data.username}, ${Rank(data.honor)}`);
+      return EmbededMessage;
+    }
+    case '-user': {
+      const user_data = highestTrained(data);
+      EmbededMessage.setTitle(data.username);
+      EmbededMessage.setColor(0x23272A);
+      EmbededMessage.setThumbnail(Thumbnail(user_data[1]));
+      EmbededMessage.addFields({name: 'Progress', value: `Rank: ${data['ranks']['overall'].name} 
+      Leaderboard Position: #${data.leaderboardPosition} \n Honor: ${data.honor} 
+      Total Completed Kata: ${data.codeChallenges['totalCompleted']} \n Highest Trained: ${user_data[0]}`, inline: true});
+      return EmbededMessage;
+    }
+    case '-kata':{
+      EmbededMessage.setTitle(`Latest completed katas (${extraArg})`);
+      EmbededMessage.setColor('#0099ff');
+      EmbededMessage.setDescription(data);
+      return EmbededMessage;
+    }
+  }
 }
-
 
 function Formatter(arr) {
   let str = '';
@@ -93,6 +115,13 @@ function Formatter(arr) {
   }) 
   return str
 } 
+
+function highestTrained (data) {
+  const Languages = Object.keys(data['ranks']['languages']);
+  Languages.push(`(${data['ranks']['languages'][Languages[0]]['name']})`);
+  const joined = Languages.join(', ');
+  return [joined, Languages];
+}
 
 client.login(process.env.RIM_TOKEN)
 

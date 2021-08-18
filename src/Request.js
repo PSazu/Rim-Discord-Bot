@@ -22,10 +22,38 @@ function Thumbnail(arr) {
     }
 }
 
+function Rank(honor){
+    if(honor >= 0 && honor < 20) {
+        return `You need ${20 - honor} ` + "scores for level up to `7kyu`";
+    }
+    else if (honor >= 20 && honor < 76) {
+        return `You need ${76 - honor} ` + "scores for level up to `6kyu`";
+    }
+    else if(honor >= 76 && honor < 229) {
+        return `You need ${229 - honor} ` + "scores for level up to `5kyu`";
+    }
+    else if (honor >= 229 && honor < 643) {
+        return `You need ${643 - honor} ` + "scores for level up to `4kyu`";
+    }
+    else if (honor >= 643 && honor < 1768) {
+        return `You need ${1768 - honor} ` + "scores for level up to `3kyu`";
+    }
+    else if (honor >= 1768 && honor < 4829) {
+        return `You need ${4829 - honor} ` + "scores for level up to `2kyu`";
+    }
+    else if (honor >= 4829 && honor < 13147) {
+        return `You need ${13147 - honor} ` + "scores for level up to `1kyu`";
+    }
+    else if (honor >= 13147 && honor < 35759) {
+        return `You need ${35759 - honor} ` + "scores for level up to `1dan`";
+    }
+}
+
 
 module.exports = {
     FetchUserData,
-    Thumbnail
+    Thumbnail,
+    Rank
 }
 
   
