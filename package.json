@@ -1,10 +1,11 @@
 {
   "name": "Rim",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "Rim.js",
+  "repository": "https://github.com/PSazu/Rim-Discord-Bot.git",
   "scripts": {
-    "start": "node src/Rim.js",
+    "start": "node Rim.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
