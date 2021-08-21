@@ -1,1 +1,1 @@
-worker: node src/Rim.js
+worker: node Rim.js
