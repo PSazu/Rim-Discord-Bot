@@ -76,7 +76,7 @@ module.exports = {
 
         if(ServerQueue) {
             console.log("song is pushed to the serverQueue's songs arr");
-            serverQueue.songs.push(song);
+            ServerQueue.songs.push(song);
             return message.channel.send(`✅ **${song.title}** has been added to the queue by **${message.auther}**`)
         }
 
