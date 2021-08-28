@@ -49,12 +49,10 @@ module.exports = {
       });
       dispatcher.setVolumeLogarithmic(queue.volume / 100);
       try {
-        var playingMessage = await queue.textChannel.send(`🎶 Started playing: **${song.title}** ${song.url}`);
+        var playingMessage = await queue.textChannel.send(`🎶 Started playing: **${song.title}** \n ${song.url}`);
         playingMessage.react("⏭")
            .then(() => playingMessage.react("⏯"))
            .then(() => playingMessage.react("🔇"))
-           .then(() => playingMessage.react("🔉"))
-           .then(() => playingMessage.react("🔊"))
            .then(() => playingMessage.react("🔁"))
            .then(() => playingMessage.react("⏹"))
            .catch((error) => console.error(error));
@@ -70,14 +68,69 @@ module.exports = {
         if (!queue) return;
         const member = message.guild.member(user);
         switch (reaction.emoji.name) {
-            case "⏭":
+            case "⏭": {
                 queue.playing = true;
-                reaction.users.remove(user).catch(console.error);
-                if (!canModifyQueue(member)) return queue.textChannel.send('You need to join a voice channel first!');
+                reaction.users.remove(user);
+                if (!canModifyQueue(member)) return message.reply('You need to join a voice channel first!');
                 queue.connection.dispatcher.end();
-                queue.textChannel.send(`**${user}** ⏩ skipped the song`);
+                queue.textChannel.send("`"+`${user.username} `+ "` " + `⏩` + ` skipped the song`)
                 collector.stop();
                 break;
+            }
+            case "⏯": {
+                reaction.users.remove(user);
+                if (!canModifyQueue(member)) return message.reply('You need to join a voice channel first!');
+                if (queue.playing) {
+                  queue.playing = !queue.playing;
+                  queue.connection.dispatcher.pause(true); 
+                  queue.textChannel.send("`"+`${user.username} `+ "` " + `⏸` + ` paused the music.`);
+                } 
+                else {
+                  queue.playing = !queue.playing;
+                  queue.connection.dispatcher.resume();
+                  queue.textChannel.send("`"+`${user.username} `+ "` " + `▶` + ` resumed the music!`);
+                }
+              break;
+            }
+
+            case "🔇": {
+              reaction.users.remove(user).catch(console.error);
+              if (!canModifyQueue(member))  return message.reply('You need to join a voice channel first!');
+              if (queue.volume <= 0) {
+                queue.volume = 100;
+                queue.connection.dispatcher.setVolumeLogarithmic(100 / 100);
+                queue.textChannel.send("`"+`${user.username} `+ "` " + `🔊` + ` unmuted the music!`);
+              } 
+              else {
+                queue.volume = 0;
+                queue.connection.dispatcher.setVolumeLogarithmic(0);
+                queue.textChannel.send("`"+`${user.username} `+ "` " + `🔇` + ` muted the music!`);
+              }
+              break;
+            }
+            case "🔁":{
+              reaction.users.remove(user).catch(console.error);
+              if (!canModifyQueue(member)) return message.reply('You need to join a voice channel first!');
+              queue.loop = !queue.loop;
+              console.log("loop status" + queue.loop);
+              const loop = queue.loop ? "**on**" :  "**off**";
+              queue.textChannel.send("`"+`${user.username} `+ "` Loop is now " + loop);
+              break;
+            }
+            case "⏹": {
+              reaction.users.remove(user).catch(console.error);
+              if (!canModifyQueue(member)) return message.reply('You need to join a voice channel first!');
+              queue.songs = [];
+              queue.textChannel.send("`"+`${user.username} `+ "` " + `⏹` + ` stopped the music!`);
+              try {
+                queue.connection.dispatcher.end();
+              } catch (error) {
+                console.error(error);
+                queue.connection.disconnect();
+              }
+              collector.stop();
+              break;
+            }
         }
       });
 

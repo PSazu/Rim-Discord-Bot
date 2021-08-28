@@ -1,1 +1,1 @@
-worker: node Rim.js
+worker: npm start

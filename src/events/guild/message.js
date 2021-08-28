@@ -10,10 +10,9 @@ module.exports = (Discord, client, message) => {
             }
             findCommand(args[0], args[1], message, client, Discord);
             break;
-        case 'play':
-            findCommand('play', args, message, client, Discord); 
-            break; 
     }
+    //MUSIC
+    findCommand(command.toLowerCase(), args, message, client, Discord);
 }
 
 function findCommand(alliesCommand, arg, message, client, Discord) {

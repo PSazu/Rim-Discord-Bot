@@ -52,7 +52,7 @@ module.exports = {
                 url: songInfo.videoDetails.video_url,
                 duration: songInfo.videoDetails.lengthSeconds
              };
-             console.log(song);
+            
            }
            catch(error){
             console.error("Failed to get url info", error);
@@ -75,9 +75,9 @@ module.exports = {
         }
 
         if(ServerQueue) {
-            console.log("song is pushed to the serverQueue's songs arr");
+            console.log("song is pushed to the serverQueue's songs list");
             ServerQueue.songs.push(song);
-            return message.channel.send(`✅ **${song.title}** has been added to the queue by **${message.auther}**`)
+            return message.channel.send(`✅ **${song.title}** has been added to the queue by ` +"`"+ `${message.author.tag}`+"`");
         }
 
         queueConstruct.songs.push(song);
@@ -87,7 +87,6 @@ module.exports = {
             queueConstruct.connection = await channel.join();
             await queueConstruct.connection.voice.setSelfDeaf(true);
             play(queueConstruct.songs[0], message);
-            console.log('PLAYS MUSIC I GUESS');
           } catch (error) {
             console.error(error);
             message.client.queue.delete(message.guild.id);
