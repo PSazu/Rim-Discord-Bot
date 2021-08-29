@@ -2,6 +2,8 @@ const ytdl = require("ytdl-core-discord");
 const { canModifyQueue } = require('../Utills/utill.js');
 const PRUNING = false; 
 
+// 1) it doesn't need sending emojies on player XD.
+// 2) I just need to handle on commands.
 module.exports = {
     async play(song, message) {
         const queue = message.client.queue.get(message.guild.id);

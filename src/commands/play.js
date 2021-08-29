@@ -5,8 +5,7 @@ const ytdl = require('ytdl-core');
 const { play } = require('../includes/play.js')
 const youtube = new YouTubeAPI(process.env.YOUTUBE_API_KEY);
 
-
-
+//handle when player is forcefully disconnect.
 
 module.exports = {
     name: 'play',
