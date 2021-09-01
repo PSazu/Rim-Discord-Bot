@@ -6,7 +6,6 @@ module.exports = {
     category: 'codewars',
     execute(client, message, args) {
         fetchData(`https://www.codewars.com/api/v1/users/${args}`).then(JSON =>{
-            console.log('REQUEST SUCCESS');
             message.channel.send({embed:{
                 author: {name: 'Codewars',icon_url: 'https://cdn.discordapp.com/attachments/808327538291900416/872458877126475826/codewars.png'},
                 title: JSON.username,

@@ -9,10 +9,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Rin <enkhtugsog@gmail.com>",
   "license": "ISC",
+  "engines": {
+    "node": ">=14.16.0"
+  },
   "dependencies": {
-    "@discordjs/opus": "^0.5.3",
+    "@discordjs/opus": "^0.6.0",
     "chalk": "^4.1.2",
     "discord.js12": "npm:discord.js@^12.5.3",
     "dotenv": "^10.0.0",

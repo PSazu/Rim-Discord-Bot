@@ -7,4 +7,5 @@ exports.canModifyQueue = (member) => {
     }
   
     return true;
-  };
+};
+

@@ -13,7 +13,6 @@ module.exports = {
 
     execute (client, message, args) {
         fetchData(`https://www.codewars.com/api/v1/users/${args}`).then(JSON => {
-            console.log('REQUEST SUCCESS');
             const user_data = this.highestTrained(JSON);
             message.channel.send({
                 embed:{

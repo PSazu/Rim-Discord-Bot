@@ -17,7 +17,6 @@ module.exports = {
 
     execute(client, message , args){
         fetchData(`http://www.codewars.com/api/v1/users/${args}/code-challenges/completed?page=0`).then(JSON =>{
-            console.log('REQUEST SUCCESS');
             let arr = [];
             for(let i = 0; i < JSON.data.length; i++) {
               if(arr.length === 10) { break;}
