@@ -125,7 +125,7 @@ module.exports = {
         }
         else {
             try{
-            message.channel.send('Searching' + "`");
+            message.channel.send("🔎" + ' Searching' + "`"  + url + "`");
             const results = await youtube.searchVideos(url, 1, { part: "snippet" });
             if (results.length <= 0) {
                 // No video results.

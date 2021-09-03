@@ -7,7 +7,7 @@ function EmbedMessageQueue(message, queue, Discord) {
       let j = i;
       k += 10;
   
-      const info = current.map((track) => `${++j} - [${track.title}](${track.url})`).join("\n");
+      const info = current.map((track) => "`" + `${++j}.`+"`"+ `[${track.title}](${track.url})` + "| `Requested By:" + message.author.tag + "`").join("\n\n");
 
       const embeds = new Discord.MessageEmbed();
       embeds.setTitle(`Queue for ${message.guild.name}`)
@@ -31,8 +31,6 @@ module.exports = {
         let currentPage = 0;
         const embeds = EmbedMessageQueue(message, queue.songs, Discord);
         const queueEmbed = await message.channel.send(
-            // `**${i18n.__mf("queue.currentPage")} ${currentPage + 1}/${embeds.length}**`,
-            // embeds[currentPage]
             `Current Page - ${currentPage + 1} / ${embeds.length}`, embeds[currentPage]
         );
         try {
@@ -54,14 +52,14 @@ module.exports = {
                 if (currentPage < embeds.length - 1) {
                   currentPage++;
                   queueEmbed.edit(
-                    `Current Page - ${currentPage + 1} ${embeds.length}`,embeds[currentPage]
+                    `Current Page - ${currentPage + 1}/${embeds.length}`,embeds[currentPage]
                   );
                 }
               } else if (reaction.emoji.name === "⬅️") {
                 if (currentPage !== 0) {
                   --currentPage;
                   queueEmbed.edit(
-                    `Current Page - ${currentPage + 1} ${embeds.length}`, embeds[currentPage]
+                    `Current Page - ${currentPage + 1}/${embeds.length}`, embeds[currentPage]
                   );
                 }
               } else {

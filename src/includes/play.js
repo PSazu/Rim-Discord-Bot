@@ -1,20 +1,20 @@
 const ytdl = require("ytdl-core-discord");
-
 module.exports = {
     async play(song, message) {
         const queue = message.client.queue.get(message.guild.id);
-        if(!song) {
-            setTimeout(function () {
-              // this works when nothing to play
-              if (queue.connection.dispatcher && message.guild.me.voice.channel) return;
-              queue.channel.leave();
-              message.channel.send('❌ Music queue ended.');
-            }, 500 * 1000);
-            return message.client.queue.delete(message.guild.id);
-        }
+        // if(!song) {
+        //     setTimeout(function () {
+        //       if (queue.connection.dispatcher && message.guild.me.voice.channel) return;
+        //       queue.channel.leave();
+        //       message.channel.send('❌ Music queue ended.');
+        //     }, 50 * 1000);
+        //     return message.client.queue.delete(message.guild.id);
+        // }
         let stream = null;
+        console.log("SONG URL: " + song.url);
         let streamType = song.url.includes("youtube.com") ? "opus" : "ogg/opus";
         try{
+          console.log("Includes try url:  " + song.url);
             if(song.url.includes("youtube.com")) {
                 stream = await ytdl(song.url, {highWaterMark: 1 << 25});
             }
@@ -51,5 +51,5 @@ module.exports = {
       });
       dispatcher.setVolumeLogarithmic(queue.volume / 100);
       await queue.textChannel.send(`🎶 Started playing: ` + "`"+`${song.title}` + "`");
-    }
+    },
 } 
