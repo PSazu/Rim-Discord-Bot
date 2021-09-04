@@ -79,7 +79,7 @@ module.exports = {
         const youtubeURL =  /^(https?:\/\/)?(www\.)?(m\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
         const validPlaylist = /^.*(list=)([^#\&\?]*).*/gi;
         const youtubeRadio = /(start_radio)/gi
-        const url = args.join('').trim();
+        const url = args.join(' ').trim();
         const urlValid = youtubeURL.test(url);
         // CHECK USER JOINED VOICE CHAT
         if (!channel) return message.reply('You need to join a voice channel first!').catch(console.error);
