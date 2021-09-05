@@ -21,6 +21,7 @@ module.exports = {
         .setColor("#F8AA2A");
         try{
             const results = await youtube.searchVideos(args, 10);
+            // maping through result
             results.map((video, index) => embedMessage.addField(video.shortURL, `${index + 1}. ${video.title}`));
             let resultsMessage = await message.channel.send(embedMessage);
             message.channel.activeCollector = true;

@@ -43,6 +43,7 @@ module.exports = {
         if (queue.loop) {
           // if loop is on, push the song back at the end of the queue
           // so it can repeat endlessly
+        
           let lastSong = queue.songs.shift();
           queue.songs.push(lastSong);
           module.exports.play(queue.songs[0], message);
@@ -59,7 +60,9 @@ module.exports = {
         module.exports.play(queue.songs[0], message);
       });
       dispatcher.setVolumeLogarithmic(queue.volume / 100);
-      await queue.textChannel.send(`🎶 Started playing: ` + "`"+`${song.title}` + "`");
-     
+      if(!queue.loop) {
+        await queue.textChannel.send(`🎶 Started playing: ` + "`"+`${song.title}` + "`");
+      }
+
     },
 } 
