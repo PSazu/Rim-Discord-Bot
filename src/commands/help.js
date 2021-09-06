@@ -33,7 +33,7 @@ module.exports = {
                     value: '`user`, `kata`, `rank`'
                 }],
                 image: {
-                    url: generateGifs(1, 21),
+                    url: generateGifs(1, 18),
                  },
                 color: 0xB2B1B9,
                 footer: {
