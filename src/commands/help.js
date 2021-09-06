@@ -16,17 +16,13 @@ module.exports = {
             if(!codewars[file_name]) {
                 description += "`"+ file_name + "`, "  
             } 
-            if(command_files.length - 1 === i){
-                description += "`"+ file_name + "`";
-                break;
-            }
         }
         message.channel.send({
             embed:{
                 title: "Rim help pannel",
                 fields: [{
                     name: 'Music',
-                    value: description,
+                    value: description.slice(0, description.length - 2),
                 },
                 {
                     name: 'Codewars',
