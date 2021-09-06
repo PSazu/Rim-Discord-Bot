@@ -1,7 +1,7 @@
 module.exports = {
-    name: 'nowplaying',
-    
+    name: 'np',
+    aliases: ['nowplaying'],
     execute(client, message) {
-        message.channel.send("Одоохондоо засвартай байгаа гш.")
+        message.channel.send("Кодыг нь арай бичээгүй байгаа 😂")
     }
 }
