@@ -13,13 +13,13 @@ module.exports = {
         const command_files = fs.readdirSync('./src/commands/').filter(file => file.endsWith('.js'));
         for(let i = 0; i < command_files.length; i++) {
             const file_name = command_files[i].match(/\w+/)[0];
+            if(!codewars[file_name]) {
+                description += "`"+ file_name + "`, "  
+            } 
             if(command_files.length - 1 === i){
                 description += "`"+ file_name + "`";
                 break;
             }
-            if(!codewars[file_name]) {
-                description += "`"+ file_name + "`, "  
-            } 
         }
         message.channel.send({
             embed:{
