@@ -10,7 +10,7 @@ module.exports = {
     if (!queue.playing) {
         queue.playing = true;
         queue.connection.dispatcher.resume();
-        return  queue.textChannel.send("`"+`${message.author.tag} `+ "` " + `⏩` + ` skipped the song`);
+        return  queue.textChannel.send("`"+`${message.author.tag} `+ "` " + ` user just resumed the song`);
     }
     else{
       // let's check this out XD 
