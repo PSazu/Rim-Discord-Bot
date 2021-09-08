@@ -1,5 +1,5 @@
 const fs = require('fs');
-const {generateGifs} = require('../helper/gif.js');
+const {generateGifs} = require('../../helper/gif.js');
 module.exports = {
     name: "help",
     category: "music-player",

@@ -1,5 +1,5 @@
-const {fetchData, rank} = require('../api/request');
-const {generateGifs} = require('../helper/gif');
+const {fetchData, rank} = require('../../api/request');
+const {generateGifs} = require('../../helper/gif');
 module.exports = {
     name: '-rank',
     aliases: ['-r'],

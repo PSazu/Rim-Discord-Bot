@@ -1,7 +1,7 @@
 require('dotenv').config();
 const YouTubeAPI = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
-const { play } = require('../includes/play.js')
+const { play } = require('../../includes/play.js')
 const youtube = new YouTubeAPI(process.env.YOUTUBE_API_KEY);
 //handle when player is forcefully disconnect.
 module.exports = {
