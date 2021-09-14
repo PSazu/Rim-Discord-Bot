@@ -1,4 +1,4 @@
- const {fetchData} = require('../api/request');
+ const {fetchData} = require('../../api/request');
 
 module.exports = {
     name: '-kata',
@@ -17,7 +17,7 @@ module.exports = {
 
     execute(client, message , args){
         fetchData(`http://www.codewars.com/api/v1/users/${args}/code-challenges/completed?page=0`).then(JSON =>{
-            let arr = [];
+        let arr = [];
             for(let i = 0; i < JSON.data.length; i++) {
               if(arr.length === 10) { break;}
               arr.push([JSON['data'][i]['name'],JSON['data'][i]['completedAt']]);

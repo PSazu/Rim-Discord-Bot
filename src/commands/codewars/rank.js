@@ -1,5 +1,5 @@
-const {fetchData, rank} = require('../api/request');
-const {generateGifs} = require('../helper/gif');
+const {fetchData, rank} = require('../../api/request');
+const {generateGifs} = require('../../helper/gif');
 module.exports = {
     name: '-rank',
     aliases: ['-r'],
@@ -11,7 +11,7 @@ module.exports = {
                 title: JSON.username,
                 color: 0xFF6B6B,
                 image: {
-                   url: generateGifs(1, 18),
+                   url: generateGifs(1, 17),
                 },
                 description: `Hi ${JSON.username}, ${rank(JSON.honor)}`,
                 footer: {

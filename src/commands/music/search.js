@@ -1,7 +1,7 @@
 require('dotenv').config();
 const YouTubeAPI = require("simple-youtube-api");
 const youtube = new YouTubeAPI(process.env.YOUTUBE_API_KEY);
-const { play } = require('../includes/play.js')
+const { play } = require('../../includes/play.js')
 
 module.exports = {
     name: "search",

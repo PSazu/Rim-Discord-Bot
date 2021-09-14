@@ -1,4 +1,4 @@
-const {fetchData, thumbnail} = require('../api/request');
+const {fetchData, thumbnail} = require('../../api/request');
 module.exports = {
     name: '-user',
     aliases: ['-u'],

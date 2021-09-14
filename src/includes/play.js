@@ -61,8 +61,10 @@ module.exports = {
       });
       dispatcher.setVolumeLogarithmic(queue.volume / 100);
       if(!queue.loop) {
-        await queue.textChannel.send(`🎶 Started playing: ` + "`"+`${song.title}` + "`");
+        if(queue.songs.length === 1 && queue.message_count === 0) {
+          queue.message_count++;
+          await queue.textChannel.send(`🎶 Started playing: ` + "`"+`${song.title}` + "`");
+        }
       }
-
     },
 } 

@@ -1,4 +1,4 @@
-const { canModifyQueue } = require('../Utills/utill');
+const { canModifyQueue } = require('../../Utills/utill');
 module.exports = {
   name: "resume",
   aliases: ["r"],
@@ -10,10 +10,9 @@ module.exports = {
     if (!queue.playing) {
         queue.playing = true;
         queue.connection.dispatcher.resume();
-        return  queue.textChannel.send("`"+`${message.author.tag} `+ "` " + ` user just resumed the song`);
+        return  queue.textChannel.send("`"+`${message.author.tag} `+ "` " + ` resumed the song.`);
     }
     else{
-      // let's check this out XD 
       return  queue.textChannel.send("This song already playing");
     }
   }

@@ -1,5 +1,5 @@
 const fs = require('fs');
-const {generateGifs} = require('../helper/gif.js');
+const {generateGifs} = require('../../helper/gif.js');
 module.exports = {
     name: "help",
     category: "music-player",
@@ -10,7 +10,7 @@ module.exports = {
             'rank': true
           }
         let description = "";
-        const command_files = fs.readdirSync('./src/commands/').filter(file => file.endsWith('.js'));
+        let command_files = getCommandFiles();
         for(let i = 0; i < command_files.length; i++) {
             const file_name = command_files[i].match(/\w+/)[0];
             if(!codewars[file_name]) {
@@ -29,7 +29,7 @@ module.exports = {
                     value: '`user`, `kata`, `rank`'
                 }],
                 image: {
-                    url: generateGifs(1, 18),
+                    url: generateGifs(1, 17),
                  },
                 color: 0xB2B1B9,
                 footer: {
@@ -38,5 +38,12 @@ module.exports = {
                 }
             }
         });
+       
     }
+}
+
+function getCommandFiles() {
+    const codewars_commands = fs.readdirSync('./src/commands/codewars/').filter(file => file.endsWith('.js'));
+    const music_commands = fs.readdirSync('./src/commands/music/').filter(file => file.endsWith('.js'));
+    return music_commands.concat(codewars_commands);
 }

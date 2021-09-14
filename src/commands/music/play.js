@@ -1,9 +1,12 @@
 require('dotenv').config();
 const YouTubeAPI = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
-const { play } = require('../includes/play.js')
+const { play } = require('../../includes/play.js')
 const youtube = new YouTubeAPI(process.env.YOUTUBE_API_KEY);
-//handle when player is forcefully disconnect.
+// check voice room size if it's full then send message
+// Optimize queue message send.
+
+// hugjum anh togloj baihad message yvuulah esvel playlist, long queue nii zuvhun odoo togloj baigaa duug l send hiih 
 module.exports = {
     name: 'play',
     aliases: ['p'],
@@ -80,7 +83,6 @@ module.exports = {
         const validPlaylist = /^.*(list=)([^#\&\?]*).*/gi;
         const youtubeRadio = /(start_radio)/gi
         const url = typeof args === 'object' ? args.join(' ').trim() : args; 
-        console.log(typeof url);
         const urlValid = youtubeURL.test(url);
         // CHECK USER JOINED VOICE CHAT
         if (!channel) return message.reply('You need to join a voice channel first!').catch(console.error);
@@ -105,7 +107,8 @@ module.exports = {
             songs: [],
             loop: false,
             volume: 100,
-            playing: true
+            playing: true,
+            message_count: 0,
         };
         let songInfo = null;
         let song = null;
@@ -159,10 +162,9 @@ module.exports = {
             await queueConstruct.connection.voice.setSelfDeaf(true);
             play(queueConstruct.songs[0], message);
           } catch (error) {
-            console.error(error);
             message.client.queue.delete(message.guild.id);
             await channel.leave();
-            return message.channel.send('Could not join the channel');
+            return message.channel.send(error.message);
         }
 
     }   

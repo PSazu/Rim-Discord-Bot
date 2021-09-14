@@ -8,14 +8,13 @@ let gif = {
     7: 'https://c.tenor.com/g3TAB8h_QgwAAAAC/good-anime.gif',
     8: 'https://media.giphy.com/media/Pnmo3170vFepUPvGhN/giphy.gif',
     9:'https://media.giphy.com/media/zj0BxstyhGufC/giphy.gif',
-    10: 'https://c.tenor.com/t61obx6y_b4AAAAd/anime-citrus.gif',
-    11: 'https://c.tenor.com/QqwqhXmBAJwAAAAC/anime-happy.gif',
-    12: 'https://c.tenor.com/GGdOX-9pLyAAAAAC/hyouka-smile.gif',
-    13: 'https://c.tenor.com/mKTS5nbF1zcAAAAd/cute-anime-dancing.gif',
-    14: 'https://c.tenor.com/LMxwdxg5Ba8AAAAC/gabriel-dropout.gif',
-    15: 'https://c.tenor.com/TTzBJq1DsYkAAAAC/tohru-kobayashisan-chi-no-maid-dragon.gif',
-    16: 'https://c.tenor.com/tjNaVhtjz4QAAAAC/black-hanekawa-anime.gif',
-    17: 'https://c.tenor.com/6qCZDpBfG8AAAAAC/anime-chunibyo.gif',
+    10: 'https://c.tenor.com/QqwqhXmBAJwAAAAC/anime-happy.gif',
+    11: 'https://c.tenor.com/GGdOX-9pLyAAAAAC/hyouka-smile.gif',
+    12: 'https://c.tenor.com/mKTS5nbF1zcAAAAd/cute-anime-dancing.gif',
+    13: 'https://c.tenor.com/LMxwdxg5Ba8AAAAC/gabriel-dropout.gif',
+    14: 'https://c.tenor.com/TTzBJq1DsYkAAAAC/tohru-kobayashisan-chi-no-maid-dragon.gif',
+    15: 'https://c.tenor.com/tjNaVhtjz4QAAAAC/black-hanekawa-anime.gif',
+    16: 'https://c.tenor.com/6qCZDpBfG8AAAAAC/anime-chunibyo.gif',
 }
 module.exports =  {
     generateGifs(min, max) {
