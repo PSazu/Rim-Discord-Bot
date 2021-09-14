@@ -19,7 +19,12 @@ module.exports = {
               if (songs.find((songIndex) => songIndex - 1 === index)) removed.push(item);
               else return true;
             });
-            queue.textChannel.send(`${message.author.tag} ❌ removed **${removed.map((song) => song.title).join("\n")}** from the queue`);
+            let removed_songs = removed.map((song) => song.title).join("\n");
+            if(removed_songs.length) {
+                // olon duu baival embeded message dotor yvuulah 
+                return queue.textChannel.send(`${message.author.tag} ❌ removed **${removed_songs}** from the queue`);
+            }
+            return queue.textChannel.send("Song is not found in Queue");
         } else {
             console.log("Else statement triggered in Remove");
         }
