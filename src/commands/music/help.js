@@ -19,23 +19,23 @@ module.exports = {
         }
         message.channel.send({
             embed:{
-                title: "Rim help pannel",
+                author: {name: 'Rim help pannel',icon_url: client.user.avatarURL()},
                 fields: [{
                     name: 'Music',
                     value: description.slice(0, description.length - 2),
                 },
                 {
+                    name: 'Bot',
+                    value: '`prefix`, `help`, `invite`, `botinfo`'
+                },
+                {
                     name: 'Codewars',
-                    value: '`user`, `kata`, `rank`'
+                    value: '`user`, `kata`, `rank`', 
+                    name:  "\u200B",
+                    value: 'if you need more information about bot then check out our ' + `[github repository](https://github.com/just-tugsuu/Rim-Discord-Bot)` 
                 }],
-                image: {
-                    url: generateGifs(1, 17),
-                 },
                 color: 0xB2B1B9,
-                footer: {
-                    text: message.author.tag, 
-                    icon_url:  message.author.displayAvatarURL()
-                }
+                // footer: {text: `if you need more information about bot then check out our ` +  `github repository`},
             }
         });
        
@@ -43,7 +43,7 @@ module.exports = {
 }
 
 function getCommandFiles() {
-    const codewars_commands = fs.readdirSync('./src/commands/codewars/').filter(file => file.endsWith('.js'));
-    const music_commands = fs.readdirSync('./src/commands/music/').filter(file => file.endsWith('.js'));
+    const codewars_commands = fs.readdirSync('./src/commands/codewars/')
+    const music_commands = fs.readdirSync('./src/commands/music/')
     return music_commands.concat(codewars_commands);
 }
