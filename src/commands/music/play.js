@@ -4,9 +4,6 @@ const ytdl = require('ytdl-core');
 const { play } = require('../../includes/play.js')
 const youtube = new YouTubeAPI(process.env.YOUTUBE_API_KEY);
 // check voice room size if it's full then send message
-// Optimize queue message send.
-
-// hugjum anh togloj baihad message yvuulah esvel playlist, long queue nii zuvhun odoo togloj baigaa duug l send hiih 
 module.exports = {
     name: 'play',
     aliases: ['p'],

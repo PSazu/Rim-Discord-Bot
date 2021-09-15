@@ -9,7 +9,7 @@ module.exports = {
             timer = setInterval(() => {
               command_listener++; 
               if(song === undefined) {
-                if(command_listener === 100) {
+                if(command_listener === 90) {
                   queue.channel.leave();
                   message.channel.send("Rim's Successfully disconnected");
                   clearInterval(timer);

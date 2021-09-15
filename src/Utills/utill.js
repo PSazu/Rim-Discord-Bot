@@ -5,7 +5,6 @@ exports.canModifyQueue = (member) => {
     if (channelID !== botChannel) {
       return;
     }
-  
     return true;
 };
 
