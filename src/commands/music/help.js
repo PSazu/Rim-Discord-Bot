@@ -4,16 +4,19 @@ module.exports = {
     name: "help",
     category: "music-player",
     execute(client, message) {
-        const codewars = {
+        const ignore = {
             'user': true,
             'kata': true,
-            'rank': true
+            'rank': true,
+            'botinfo': true,
+            'prefix': true,
+            'invite': true
           }
         let description = "";
         let command_files = getCommandFiles();
         for(let i = 0; i < command_files.length; i++) {
             const file_name = command_files[i].match(/\w+/)[0];
-            if(!codewars[file_name]) {
+            if(!ignore[file_name]) {
                 description += "`"+ file_name + "`, "  
             } 
         }
@@ -35,7 +38,6 @@ module.exports = {
                     value: 'if you need more information about bot then check out our ' + `[github repository](https://github.com/just-tugsuu/Rim-Discord-Bot)` 
                 }],
                 color: 0xB2B1B9,
-                // footer: {text: `if you need more information about bot then check out our ` +  `github repository`},
             }
         });
        

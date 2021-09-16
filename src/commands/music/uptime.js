@@ -12,7 +12,6 @@ module.exports = {
         minutes %= 60;
         hours %= 24;
         
-      
         return message.channel.send(
             {
                 embed: {
