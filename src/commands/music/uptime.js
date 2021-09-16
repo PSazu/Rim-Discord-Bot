@@ -1,3 +1,4 @@
+const {generateGifs} = require('../../helper/gif.js');
 module.exports = {
     name: 'time',
     aliases: ['uptime'],
@@ -11,6 +12,16 @@ module.exports = {
         minutes %= 60;
         hours %= 24;
         
-        return message.channel.send("⏰ " + "Rim's uptime: `" + `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds` + "`");
+      
+        return message.channel.send(
+            {
+                embed: {
+                    author: {name: 'Rim\'s total alive time ',icon_url: client.user.avatarURL()},
+                    description: "`" + `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds` + "`",
+                    image: generateGifs(1, 17),
+                    color: 0xFF6B6B, 
+                }
+            }
+        )
     }
 }
