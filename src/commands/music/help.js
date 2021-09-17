@@ -33,10 +33,14 @@ module.exports = {
                 },
                 {
                     name: 'Codewars',
-                    value: '`user`, `kata`, `rank`', 
+                    value: '`user`, `kata`, `rank`'
+                },
+                {
                     name:  "\u200B",
                     value: 'if you need more information about bot then check out our ' + `[github repository](https://github.com/just-tugsuu/Rim-Discord-Bot)` 
-                }],
+                }
+            
+            ],
                 color: 0xB2B1B9,
             }
         });

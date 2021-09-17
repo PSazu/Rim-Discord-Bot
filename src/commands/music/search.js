@@ -21,7 +21,6 @@ module.exports = {
         .setAuthor(message.guild.name, message.guild.iconURL())
         .setTitle(`search result for ${args.join(' ')}`)
         .setColor("#F8AA2A")
-        .setTimestamp();
       
         try{
             const results = await youtube.searchVideos(args, 10);
