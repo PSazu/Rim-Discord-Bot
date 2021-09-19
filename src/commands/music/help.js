@@ -44,6 +44,59 @@ module.exports = {
                 color: 0xB2B1B9,
             }
         });
+
+        message.channel.send({
+            embed: {
+                author: {name: 'Rim',icon_url: client.user.avatarURL()},
+                description: 'Some description here',
+                fields: [{
+                    name: "play `(p)`",
+                    value: "Дуу тоглуулах бөгөөд одоохондоо зөвхөн youtube дэмжиж байгаа.",
+                    inline: true
+                },
+                {
+                    name: 'search `(s)`',
+                    value: 'search хийх ба хүссэн дуугаа reply хийж сонсох боломжтой. Олон дуу сонгохоор болвол таслал авч сонгоно',
+                    inline: true
+                }, 
+                {
+                    name: 'queue `(q)`',
+                    value: 'Server дэээр тоглож байгаа дууны жагсаалт харуулна',
+                    inline: true
+                },
+                {
+                    name: 'nowplaying `(np)`',
+                    value: 'Одоо тоглож байгаа дууг харах',
+                    inline: true
+                }, 
+                {
+                    name: 'remove `(rm)`',
+                    value: 'Queue буюу жагсаалтаас дуу гаргана',
+                    inline: true
+                }, 
+                {
+                    name: 'shuffle',
+                    value: 'Жагсаалтанд байгаа дууны байршлыг солино',
+                    inline: true
+                }, 
+                {
+                    name: 'loop',
+                    value: 'Энийг болвол засна.',
+                    inline: true
+                }, 
+                {
+                    name: 'move',
+                    value: 'Энэ коммандын кодыг бичиж дуусгаагүй байгаа',
+                    inline: true
+                },  
+                {
+                    name: 'uptime `(time)`',
+                    value: 'Rim-ийн нийт амьдарсан цаг',
+                    inline: true
+                }],
+                color: 0xB2B1B9
+            }
+        });
        
     }
 }

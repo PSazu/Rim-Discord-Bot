@@ -5,6 +5,7 @@ const { play } = require('../../includes/play.js')
 
 module.exports = {
     name: "search",
+    aliases: ["s"],
     category: 'music-player',
     filter(msg) {
         const pattern = /^[0-9]{1,2}(\s*,\s*[0-9]{1,2})*$/;
