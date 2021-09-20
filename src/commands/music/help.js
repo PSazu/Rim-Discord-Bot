@@ -109,7 +109,7 @@ module.exports = {
                 },
                 {
                     name: '\u200B',
-                    value: 'Ботны талаар санал хүсэлт эсвэл Bug олвол [facebook](https://www.facebook.com/profile.php?id=100006634698123), Хамтарч Contribution хийх бол [github](https://github.com/just-tugsuu/Rim-Discord-Bot), `Discord: Rin音#1404`, нэмэлт мэдээллийг `botinfo`'
+                    value: 'Ботны талаар холбоо барих, санал хүсэлт, Bug олдвол `Discord: Rin音#1404`,  Contribution хийх бол [github](https://github.com/just-tugsuu/Rim-Discord-Bot),  [facebook](https://www.facebook.com/profile.php?id=100006634698123)  нэмэлт мэдээллийг `botinfo`'
 
                 }],
                 color: 0xB2B1B9
