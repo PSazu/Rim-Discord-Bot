@@ -17,7 +17,9 @@ module.exports = {
                 embed: {
                     author: {name: 'Rim\'s total alive time ',icon_url: client.user.avatarURL()},
                     description: "`" + `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds` + "`",
-                    image: generateGifs(1, 17),
+                    image:{
+                        url: generateGifs(1, 19),
+                    },
                     color: 0xFF6B6B, 
                 }
             }

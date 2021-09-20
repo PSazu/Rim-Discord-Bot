@@ -1,5 +1,4 @@
 const fs = require('fs');
-const {generateGifs} = require('../../helper/gif.js');
 module.exports = {
     name: "help",
     category: "music-player",
@@ -48,7 +47,6 @@ module.exports = {
         message.channel.send({
             embed: {
                 author: {name: 'Rim',icon_url: client.user.avatarURL()},
-                description: 'Some description here',
                 fields: [{
                     name: "play `(p)`",
                     value: "Дуу тоглуулах бөгөөд одоохондоо зөвхөн youtube дэмжиж байгаа.",
@@ -81,7 +79,7 @@ module.exports = {
                 }, 
                 {
                     name: 'loop',
-                    value: 'Энийг болвол засна.',
+                    value: 'Дууг давтан тоглуулах болно.',
                     inline: true
                 }, 
                 {
@@ -93,6 +91,26 @@ module.exports = {
                     name: 'uptime `(time)`',
                     value: 'Rim-ийн нийт амьдарсан цаг',
                     inline: true
+                },
+                {
+                    name: 'botinfo',
+                    value: 'Rim ботны дэлгэрэнгүй мэдээлэл харуулах ба future update',
+                    inline: true
+                },
+                {
+                    name: 'prefix',
+                    value: 'одоо байгаа комманд prefix',
+                    inline: true
+                },
+                {
+                    name: 'invite',
+                    value: 'Rim bot invite хийх',
+                    inline: true
+                },
+                {
+                    name: '\u200B',
+                    value: 'Ботны талаар санал хүсэлт эсвэл Bug олвол [facebook](https://www.facebook.com/profile.php?id=100006634698123), Хамтарч Contribution хийх бол [github](https://github.com/just-tugsuu/Rim-Discord-Bot), `Discord: Rin音#1404`, нэмэлт мэдээллийг `botinfo`'
+
                 }],
                 color: 0xB2B1B9
             }
