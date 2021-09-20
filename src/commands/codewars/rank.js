@@ -11,7 +11,7 @@ module.exports = {
                 title: JSON.username,
                 color: 0xFF6B6B,
                 image: {
-                   url: generateGifs(1, 19),
+                   url: generateGifs(1, 17),
                 },
                 description: `Hi ${JSON.username}, ${rank(JSON.honor)}`,
                 footer: {

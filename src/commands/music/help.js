@@ -93,7 +93,7 @@ module.exports = {
                     inline: true
                 },
                 {
-                    name: 'botinfo',
+                    name: 'botinfo `(info)`',
                     value: 'Rim ботны дэлгэрэнгүй мэдээлэл харуулах ба future update',
                     inline: true
                 },
