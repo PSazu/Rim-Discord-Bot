@@ -8,7 +8,7 @@ module.exports = {
         const pattern = /^[0-9]{1,2}(\s*,\s*[0-9]{1,2})*$/;
         if (!queue) return message.channel.send("❌ **Nothing playing in this server**");
         if (!canModifyQueue(message.member)) return queue.textChannel.send(`You need to join a voice channel first!`);
-        if(!args.length) return message.channel.send("`Usage:`" + "`~remove || rm` " + "` <Queue Number>`");
+        if(!args.length) return message.channel.send("`Usage:`" + "`~rm` " + "` <Queue Number>`");
         
         const arguments = args.join("");
         const songs = arguments.split(",").map((arg) => parseInt(arg));

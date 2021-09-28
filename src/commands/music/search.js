@@ -13,7 +13,7 @@ module.exports = {
     },
     async execute(client, message, args, Discord) {
         if(!args.length) {
-            return message.reply("`Usage:` " + "`~search` " + "` <music number>`");
+            return message.reply("`Usage:` " + "`~search` " + "` <song name>`");
         }
        
         if(message.channel.activeCollector) return message.reply("A message collector is already active in this channel.");

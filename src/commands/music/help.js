@@ -99,12 +99,27 @@ module.exports = {
                 },
                 {
                     name: 'prefix',
-                    value: 'одоо байгаа комманд prefix',
+                    value: 'комманд prefix',
                     inline: true
                 },
                 {
                     name: 'invite',
                     value: 'Rim bot invite хийх',
+                    inline: true
+                },
+                {
+                    name: 'disconnect `(dc)`',
+                    value: 'voice channel - аас гарах',
+                    inline: true
+                },
+                {
+                    name: 'pause',
+                    value: 'Одоо тоглож байгаа дууг зогсоох',
+                    inline: true
+                },
+                {
+                    name: 'resume',
+                    value: 'Pause хийгдсэн дууг үргэлжлүүлэх',
                     inline: true
                 },
                 {
