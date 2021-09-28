@@ -1,8 +1,8 @@
  const {fetchData} = require('../../api/request');
 
 module.exports = {
-    name: '-kata',
-    aliases: ['-k'],
+    name: 'kata',
+    aliases: ['k'],
     category: 'codewars', 
     formatter(arr) {
         let str = '';
@@ -16,6 +16,7 @@ module.exports = {
     },
 
     execute(client, message , args){
+        if(!args.length) { return message.channel.send("`~kata` `< Codewars username >`");}
         fetchData(`http://www.codewars.com/api/v1/users/${args}/code-challenges/completed?page=0`).then(JSON =>{
         let arr = [];
             for(let i = 0; i < JSON.data.length; i++) {

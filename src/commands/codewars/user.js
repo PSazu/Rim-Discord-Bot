@@ -1,7 +1,7 @@
 const {fetchData, thumbnail} = require('../../api/request');
 module.exports = {
-    name: '-user',
-    aliases: ['-u'],
+    name: 'user',
+    aliases: ['u'],
     category: 'codewars',
     
     highestTrained (data) {
@@ -12,6 +12,7 @@ module.exports = {
     },
 
     execute (client, message, args) {
+        if(!args.length) { return message.channel.send("`~user` `< Codewars username >`");}
         fetchData(`https://www.codewars.com/api/v1/users/${args}`).then(JSON => {
             const user_data = this.highestTrained(JSON);
             message.channel.send({
