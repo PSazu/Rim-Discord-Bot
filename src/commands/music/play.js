@@ -37,11 +37,11 @@ module.exports = {
         .filter((video) => video.title != "Private video" && video.title != "Deleted video");
        
         let syncSongData = await Promise.all(newSongs.map(async videos => {
-            let songInfo = await ytdl.getInfo(videos.url);
+            let playlistSong_info = await ytdl.getInfo(videos.url);
             return (song = {
-                title: songInfo.videoDetails.title,
-                url: songInfo.videoDetails.video_url,
-                duration: songInfo.videoDetails.lengthSeconds
+                title: playlistSong_info.videoDetails.title,
+                url: playlistSong_info.videoDetails.video_url,
+                duration: playlistSong_info.videoDetails.lengthSeconds
             })
         }));
          
