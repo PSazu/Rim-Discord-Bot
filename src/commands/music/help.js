@@ -93,23 +93,8 @@ module.exports = {
                     inline: true
                 },
                 {
-                    name: 'botinfo `(info)`',
-                    value: 'Rim ботны дэлгэрэнгүй мэдээлэл харуулах ба future update',
-                    inline: true
-                },
-                {
-                    name: 'prefix',
-                    value: 'комманд prefix',
-                    inline: true
-                },
-                {
-                    name: 'invite',
-                    value: 'Rim bot invite хийх',
-                    inline: true
-                },
-                {
                     name: 'disconnect `(dc)`',
-                    value: 'voice channel - аас гарах',
+                    value: 'Voice channel - аас гарах',
                     inline: true
                 },
                 {
@@ -120,6 +105,21 @@ module.exports = {
                 {
                     name: 'resume',
                     value: 'Pause хийгдсэн дууг үргэлжлүүлэх',
+                    inline: true
+                },
+                {
+                    name: 'botinfo `(info)`',
+                    value: 'Rim ботны дэлгэрэнгүй мэдээлэл харуулах ба future update',
+                    inline: true
+                },
+                {
+                    name: 'prefix',
+                    value: 'Комманд prefix',
+                    inline: true
+                },
+                {
+                    name: 'invite',
+                    value: 'Rim bot invite хийх',
                     inline: true
                 },
                 {
