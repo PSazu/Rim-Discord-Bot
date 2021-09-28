@@ -1,7 +1,7 @@
 const { canModifyQueue } = require('../../Utills/utill');
 module.exports = {
     name: "disconnect",
-    aliases: ["dc"],
+    aliases: ["dc", "leave"],
     category: "music-player",
     execute(client, message) {
         try{
