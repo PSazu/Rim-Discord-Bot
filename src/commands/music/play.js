@@ -26,28 +26,32 @@ module.exports = {
         try{
             playlist = await youtube.getPlaylist(args, { part: "snippet" });
             videos = await playlist.getVideos(70, { part: "snippet" });
-           
+
         }
         catch(error) {
             console.log(error.message);
             return message.reply("❌ " + "`Playlist not found`");
         }
 
-        const newSongs = videos
-        .filter((video) => video.title != "Private video" && video.title != "Deleted video")
-        .map((video) => {
-          return (song = {
-            title: video.title,
-            url: video.url,
-            duration: video.durationSeconds
-          });
-        });
+        const newSongs = videos 
+        .filter((video) => video.title != "Private video" && video.title != "Deleted video");
+       
+        let syncSongData = await Promise.all(newSongs.map(async videos => {
+            let songInfo = await ytdl.getInfo(videos.url);
+            return (song = {
+                title: songInfo.videoDetails.title,
+                url: songInfo.videoDetails.video_url,
+                duration: songInfo.videoDetails.lengthSeconds
+            })
+        }));
+         
+        
 
-        serverQueue ? serverQueue.songs.push(...newSongs) : queueConstruct.songs.push(...newSongs);
+        serverQueue ? serverQueue.songs.push(...syncSongData) : queueConstruct.songs.push(...syncSongData);
 
         let playlistEmbed = new MessageEmbed()
         .setTitle(`${playlist.title}`)
-        .setDescription(newSongs.map((song, index) => "`" + `${index + 1}.`+"`" + ` ${song.title} \n`))
+        .setDescription(syncSongData.map((song, index) => "`" + `${index + 1}.`+"`" + ` ${song.title} \n`))
         .setURL(playlist.url)
         .setColor("#F8AA2A")
         .setTimestamp()

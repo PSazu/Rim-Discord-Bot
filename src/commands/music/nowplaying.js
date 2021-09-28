@@ -14,7 +14,7 @@ module.exports = {
         let nowPlaying = new Discord.MessageEmbed()
         .setColor("#F3F1F5")
         .setAuthor('Now playing', message.client.user.avatarURL());
-
+        
         if(song.duration > 0) {
             nowPlaying.setDescription(`[${song.title}](${song.url})` + "\n" + 
             new Date(seek * 1000).toISOString().substr(11, 8) +
