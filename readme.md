@@ -30,7 +30,7 @@ After installing necessary packages you can start  Bot using `npm start or node 
 - [x] Music features ( Currently only supporting youtube) 
 - [ ] Support spotify and soundcloud
 - [ ] Save the music queue and playlist when I finish Database.
-- [ ]Add configuration file so it can easily change bot prefix and any other api keys. 
+- [ ] Add configuration file so it can easily change bot prefix and any other api keys. 
 - [x] CodeWars API support 
 
 
