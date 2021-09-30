@@ -11,7 +11,7 @@ function EmbedMessageQueue(message, queue, Discord) {
 
       const embeds = new Discord.MessageEmbed();
       embeds.setTitle(`Queue for ${message.guild.name}`)
-           .setColor("#F8AA2A")
+           .setColor("#E1E5EA")
            .setDescription(`**Current Song - [${queue[0].title}](${queue[0].url})}**\n\n ${info}`)
            .setTimestamp()
            .setFooter( message.author.tag, message.author.displayAvatarURL());
