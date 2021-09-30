@@ -7,7 +7,7 @@ function EmbedMessageQueue(message, queue, Discord) {
       let j = i;
       k += 10;
   
-      const info = current.map((track) => "`" + `${++j}.`+"`"+ `[${track.title}](${track.url})` + "| `Requested By:" + message.author.tag + "`").join("\n\n");
+      const info = current.map((track) => "`" + `${++j}.`+"`"+ `[${track.title}](${track.url})` + "| `" + message.author.tag + "`").join("\n\n");
 
       const embeds = new Discord.MessageEmbed();
       embeds.setTitle(`Queue for ${message.guild.name}`)
