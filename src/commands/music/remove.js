@@ -19,10 +19,26 @@ module.exports = {
               if (songs.find((songIndex) => songIndex - 1 === index)) removed.push(item);
               else return true;
             });
-            let removed_songs = removed.map((song) => song.title).join("\n");
-            if(removed_songs.length) {
-                // olon duu baival embeded message dotor yvuulah 
-                return queue.textChannel.send(`${message.author.tag} ❌ removed **${removed_songs}** from the queue`);
+           
+            if(removed.length && removed.length >= 2) {
+                let removed_songs = removed.map((song, index) => {
+                    return "`" + `${index + 1}.` + "` "+ song.title}).join("\n\n");
+               
+                return queue.textChannel.send({
+                    embed: {
+                        title: 'Songs that removed from queue',
+                        color: 0xE1E5EA,
+                        description:`${removed_songs}`,
+                        footer: {
+                            text: message.author.tag,
+                            icon_url:  message.author.displayAvatarURL(),
+                        }
+                    }
+                });
+            }
+            else if(removed.length) {
+                let removed_songs = removed.map((song) => song.title).join("\n");
+                return queue.textChannel.send(`❌ **${removed_songs}** is removed from the queue`);   
             }
             return queue.textChannel.send("Song is not found in Queue");
         } else {
