@@ -83,7 +83,7 @@ module.exports = {
                     inline: true
                 }, 
                 {
-                    name: 'move',
+                    name: 'skipto',
                     value: 'Энэ коммандын кодыг бичиж дуусгаагүй байгаа',
                     inline: true
                 },  
