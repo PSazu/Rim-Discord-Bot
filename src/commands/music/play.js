@@ -50,7 +50,7 @@ module.exports = {
         .setTitle(`${playlist.title}`)
         .setDescription(newSongs.map((song, index) => "`" + `${index + 1}.`+"`" + ` ${song.title} \n`))
         .setURL(playlist.url)
-        .setColor("757F9A/D7DDE8")
+        .setColor("#D7DDE8")
         .setTimestamp()
         .setFooter( message.author.tag,  message.author.displayAvatarURL());
 
