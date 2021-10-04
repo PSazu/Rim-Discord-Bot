@@ -27,7 +27,7 @@ module.exports = {
     category: 'music-player',
     async execute(client, message, args, Discord) {
         const queue = message.client.queue.get(message.guild.id);
-        if (!queue) return message.channel.send("❌ **Nothing playing in this server**");
+        if (!queue) return message.channel.send({embed: {description: "❌ Nothing playing in this server", color: 0xFF5C58}});
         let currentPage = 0;
         const embeds = EmbedMessageQueue(message, queue.songs, Discord);
         const queueEmbed = await message.channel.send(

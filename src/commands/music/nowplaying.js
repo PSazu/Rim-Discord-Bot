@@ -28,7 +28,7 @@ module.exports = {
     aliases: ['nowplaying'],
     execute(client, message, args, Discord) {
         const queue = message.client.queue.get(message.guild.id);
-        if (!queue) return message.channel.send("❌ **Nothing playing in this server**");
+        if (!queue) return message.channel.send({embed: {description: "❌ Nothing playing in this server", color: 0xFF5C58}});
         try{
         const song = queue.songs[0];
         const seek = (queue.connection.dispatcher.streamTime - queue.connection.dispatcher.pausedTime) / 1000;
@@ -51,7 +51,12 @@ module.exports = {
         catch(error) {
             console.log('Something went wrong in nowplaying');
             console.error(error);
-            message.channel.send('❌ Something went wrong in nowplaying command');
+            message.channel.send({
+                embed: {
+                    description: '❌ Something went wrong in nowplaying command',
+                    color: 0xFF5C58
+                }
+            });
         }
     }
 }

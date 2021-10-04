@@ -6,7 +6,7 @@ module.exports = {
     execute(client, message, args) {
         const queue = message.client.queue.get(message.guild.id);
         const pattern = /^[0-9]{1,2}(\s*,\s*[0-9]{1,2})*$/;
-        if (!queue) return message.channel.send("❌ **Nothing playing in this server**");
+        if (!queue) return message.channel.send({embed: {description: "❌ Nothing playing in this server", color: 0xFF5C58}});
         if (!canModifyQueue(message.member)) return queue.textChannel.send(`You need to join a voice channel first!`);
         if(!args.length) return message.channel.send("`Usage:" + " ~rm`" + "`<Queue Number>`");
         

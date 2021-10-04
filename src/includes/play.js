@@ -54,7 +54,6 @@ module.exports = {
         }
       })
       .on("error", (err) => {
-        console.log("Fuck is happening here u know");
         console.error(err);
         queue.songs.shift();
         module.exports.play(queue.songs[0], message);
