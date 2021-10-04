@@ -58,7 +58,7 @@ module.exports = {
 
         if (playlistEmbed.description.length >= 2048) playlistEmbed.description = playlistEmbed.description.substr(0, 2007) + "\nPlaylist larger than character limit...";
         
-        message.channel.send("`" + `${message.author.tag}`+ "`" + ` Started a playlist`, playlistEmbed);
+        message.channel.send("`" + `${message.author.username}`+ "`" + ` started a playlist`, playlistEmbed);
 
         if (!serverQueue) {
             message.client.queue.set(message.guild.id, queueConstruct);
@@ -85,14 +85,14 @@ module.exports = {
         const url = typeof args === 'object' ? args.join(' ').trim() : args; 
         const urlValid = youtubeURL.test(url);
         // CHECK USER JOINED VOICE CHAT
-        if (!channel) return message.reply('You need to join a voice channel first!').catch(console.error);
+        if (!channel) return message.reply({embed: { description: `You need to join a voice channel first!`, color: 0xFF5C58}}).catch(console.error);
         if(ServerQueue && channel !== message.guild.me.voice.channel) { return message.reply(`You must be in the same channel as ${message.client.user}`)}
         // NO ARGUMENT
         if(url.length === 0 || url === " ") return message.reply("`Usage:` " + "`~play` " + "` <YouTube URL | Video Name>`");
         // REQUEST PREMISSION
         const permissions = channel.permissionsFor(message.client.user);
-        if (!permissions.has("CONNECT")) return message.channel.send('Cannot connect to voice channel, missing permissions');
-        if (!permissions.has("SPEAK")) return message.channel.send('I cannot speak in this voice channel, make sure I have the proper permissions!');
+        if (!permissions.has("CONNECT")) return message.channel.send({embed: {description: 'Cannot connect to voice channel, missing permissions', color: 0xFF5C58}});
+        if (!permissions.has("SPEAK")) return message.channel.send({embed: { description: 'I cannot speak in this voice channel, make sure I have the proper permissions!', color: 0xFF5C58}});
         if(!youtubeURL.test(args) && validPlaylist.test(args)) {
             if(youtubeRadio.test(args)){
                return message.channel.send('❌ Rim bot doesn\'t support youtube radio'); 
@@ -149,7 +149,6 @@ module.exports = {
     }
 
         if(ServerQueue) {
-            console.log("song is pushed to the serverQueue's songs list");
             ServerQueue.songs.push(song);
             return message.channel.send(`✅ **${song.title}** has been added to the queue by ` +"`"+ `${message.author.tag}`+"`");
         }
