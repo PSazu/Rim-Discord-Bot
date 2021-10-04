@@ -83,8 +83,8 @@ module.exports = {
                     inline: true
                 }, 
                 {
-                    name: 'skipto',
-                    value: 'Энэ коммандын кодыг бичиж дуусгаагүй байгаа',
+                    name: 'skipto `(st)`',
+                    value: 'Queue доторх дурын дуу луу алгасаж тоглуулна',
                     inline: true
                 },  
                 {

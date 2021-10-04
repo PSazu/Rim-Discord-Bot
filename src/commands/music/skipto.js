@@ -3,7 +3,7 @@ const {canModifyQueue} = require("../../Utills/utill")
 module.exports = {
     name: 'skipto',
     aliases: ['st'],
-    execute(client, message) {
+    execute(client, message, args) {
         if (!args.length || isNaN(args[0])) {
             return message.channel.send("`Usage:` "  + "`~st` " + "`<Queue Number>`")
         }
@@ -36,7 +36,7 @@ module.exports = {
         queue.connection.dispatcher.end();
         queue.textChannel.send({
             embed: {
-                description: "`" + message.author + "` skipped" + "`" + `${args[0] - 1} songs` + "` songs", 
+                description: "`" + message.author.username + "` skipped" + "`" + `${args[0] - 1} songs` + "` songs", 
                 color: 0xE1E5EA,
             }
         });
