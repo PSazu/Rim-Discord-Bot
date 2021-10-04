@@ -11,7 +11,7 @@ module.exports = {
               if(song === undefined) {
                 if(command_listener === 90) {
                   queue.channel.leave();
-                  message.channel.send("Rim's Successfully disconnected");
+                  message.channel.send({embed: {description: 'Rim disconnected from voice chat', color: 0xE1E5EA }});
                   clearInterval(timer);
                 }
                 
@@ -33,7 +33,7 @@ module.exports = {
                 module.exports.play(queue.songs[0], message);
             }
             console.error("Queue error", error);
-            return message.channel.send(`❌ Error occured in queue`);
+            return message.channel.send({embed: {description: `❌ Error occured in queue`, color: 0xFF5C58}});
         }
 
       const dispatcher = queue.connection
@@ -62,7 +62,10 @@ module.exports = {
       if(!queue.loop) {
         if(queue.songs.length === 1 && queue.message_count === 0) {
           queue.message_count++;
-          await queue.textChannel.send(`🎶 Started playing: ` + "`"+`${song.title}` + "`");
+          await queue.textChannel.send({embed: {
+            description: `🎶 Started playing: ` + "`"+`${song.title}` + "`",
+            color: 0xE1E5EA 
+          }});
         }
       }
     },
