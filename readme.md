@@ -26,10 +26,9 @@ After installing necessary packages you can start  Bot using `npm start or node 
 
 ## Todo 
 
-- [ ] Support mongoDB to store data for each user. For example storing user honor and ranks with date so that they can see their progress.
 - [x] Music features ( Currently only supporting youtube) 
 - [ ] Support spotify and soundcloud
-- [ ] Save the music queue and playlist when I finish Database.
+- [ ] Save the music queue and playlist in mongoDB.
 - [ ] Add configuration file so it can easily change bot prefix and any other api keys. 
 - [x] CodeWars API support 
 
