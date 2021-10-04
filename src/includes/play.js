@@ -63,7 +63,7 @@ module.exports = {
         if(queue.songs.length === 1 && queue.message_count === 0) {
           queue.message_count++;
           await queue.textChannel.send({embed: {
-            description: `🎶 Started playing: ` + "`"+`${song.title}` + "`",
+            description:  `Started playing [${song.title}](${song.url})`,
             color: 0xE1E5EA 
           }});
         }

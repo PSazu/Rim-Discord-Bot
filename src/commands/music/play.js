@@ -71,7 +71,10 @@ module.exports = {
               console.error(error);
               message.client.queue.delete(message.guild.id);
               await channel.leave();
-              return message.channel.send(`Could not join the channel: ${error}`);
+              return message.channel.send({embed: {
+                  description: `Could not join the channel: ${error}`,
+                  color: 0xFF5C58
+              }});
             }
           }
     },
@@ -129,11 +132,10 @@ module.exports = {
         }
         else {
             try{
-            message.channel.send("🔎" + ' Searching' + " `"  + url + "`");
             const results = await youtube.searchVideos(url, 1, { part: "snippet" });
             if (results.length <= 0) {
                 // No video results.
-                message.channel.send("❌ `No matches`");
+                message.channel.send({embed: {description: 'I didn’t find any matching songs ＞﹏＜'}});
                 return;
             }
             songInfo = await ytdl.getInfo(results[0].url);
@@ -150,7 +152,10 @@ module.exports = {
 
         if(ServerQueue) {
             ServerQueue.songs.push(song);
-            return message.channel.send(`✅ **${song.title}** has been added to the queue by ` +"`"+ `${message.author.tag}`+"`");
+            return message.channel.send({embed: {
+                description: `Queued [${song.title}](${song.url}) ` + `[${message.author}]`,
+                color: 0xE1E5EA
+            }});
         }
 
         queueConstruct.songs.push(song);
