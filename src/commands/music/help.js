@@ -9,7 +9,8 @@ module.exports = {
             'rank': true,
             'botinfo': true,
             'prefix': true,
-            'invite': true
+            'invite': true,
+            'server': true,
           }
         let description = "";
         let command_files = getCommandFiles();

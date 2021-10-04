@@ -36,7 +36,7 @@ module.exports = {
         queue.connection.dispatcher.end();
         queue.textChannel.send({
             embed: {
-                description: "`" + message.author.username + "` skipped" + "`" + `${args[0] - 1} songs` + "` songs", 
+                description: "`" + message.author.username + "` skipped" + "`" + `${args[0] - 1} songs` + "`", 
                 color: 0xE1E5EA,
             }
         });
