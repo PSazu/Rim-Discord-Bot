@@ -1,7 +1,5 @@
-const { prefix } = require('../../Utills/config');
-
 module.exports = (Discord, client, message) => {
-    if(!message.content.startsWith(prefix) || message.author.bot) return ;
+    if(!message.content.startsWith('~') || message.author.bot) return ;
     const [command, ...args] = message.content.substring(1).split(' ');
     findCommand(command.toLowerCase(), args, message, client, Discord);
 }

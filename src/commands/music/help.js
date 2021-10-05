@@ -94,7 +94,7 @@ module.exports = {
                     inline: true
                 },
                 {
-                    name: 'disconnect `(dc, leave)`',
+                    name: 'disconnect `(dc)`',
                     value: 'Voice channel - аас гарах',
                     inline: true
                 },
