@@ -1,10 +1,12 @@
+let  { prefix } = require('../../Utills/config');
 module.exports = {
     name: 'prefix',
     execute(client, message, args) {
         if(args.length) {
+          prefix = args;
           return message.channel.send('We are temprory disabled prefix change');
         }
-        message.channel.send({embed: {
+        return message.channel.send({embed: {
           description: "The Rim's prefix set to: `~`",
           color: 0x009dc4 ,
       }});

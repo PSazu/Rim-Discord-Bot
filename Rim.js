@@ -6,7 +6,6 @@ const fs = require('fs');
 const chalk = require('chalk');
 //Discord Client object
 const client = new Discord.Client({ disableMentions: 'everyone' });
-const cooldowns = new Discord.Collection();
 client.commands = new Discord.Collection();
 client.queue = new Map();
 

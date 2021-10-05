@@ -1,7 +1,7 @@
 const { canModifyQueue } = require('../../Utills/utill');
 module.exports = {
     name: 'skip',
-    aliases: ['ps'],
+    aliases: ['sp'],
     category: 'music-player',
     execute(client, message) {
         const queue = message.client.queue.get(message.guild.id);

@@ -74,8 +74,8 @@ module.exports = {
                     inline: true
                 }, 
                 {
-                    name: 'shuffle',
-                    value: 'Жагсаалтанд байгаа дууны байршлыг солино',
+                    name: 'skip `(sp)`',
+                    value: 'Дуу алгасах ба queue дээрх дараачийн дууг тоглуулна',
                     inline: true
                 }, 
                 {
@@ -94,7 +94,7 @@ module.exports = {
                     inline: true
                 },
                 {
-                    name: 'disconnect `(dc)`',
+                    name: 'disconnect `(dc, leave)`',
                     value: 'Voice channel - аас гарах',
                     inline: true
                 },
