@@ -3,8 +3,7 @@ const YouTubeAPI = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
 const { play } = require('../../includes/play.js')
 const youtube = new YouTubeAPI(process.env.YOUTUBE_API_KEY);
-// check voice room size if it's full then send message
-// play youtube radio, mix etc. Also find way to distinct playlist from them.
+
 
 module.exports = {
     name: 'play',
